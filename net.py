@@ -27,16 +27,16 @@ class CNN(nn.Module):
         self.conv1 = nn.Sequential(  # (1, 28, 28)
             nn.Conv2d(
                 in_channels=1, # 输入通道数，若图片为RGB则为3通道
-                out_channels=32, # 输出通道数，即多少个卷积核一起卷积
+                out_channels=9, # 输出通道数，即多少个卷积核一起卷积
                 kernel_size=3, # 卷积核大小
                 stride=1, # 卷积核移动步长
                 padding=1, # 边缘增加的像素，使得得到的图片长宽没有变化
             ),# (32, 28, 28)
-            nn.BatchNorm2d(32),
+            nn.BatchNorm2d(9),
             nn.ReLU(inplace=True),
         )
         self.conv2 = nn.Sequential(
-            nn.Conv2d(32, 32, 3, 1, 1), # (32, 28, 28)
+            nn.Conv2d(9, 32, 3, 1, 1), # (32, 28, 28)
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2), # 池化 (32, 14, 14)
